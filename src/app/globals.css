@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* Palette: a blend Sarmad chose. The logo leads: black #0b0b0b, white and red #ea1d25 (sampled from the
+   round logo on Instagram, Pillow median of its red ring). The brief's warm cream and a hint of marigold are
+   added as the light background and a small accent. Red #ea1d25 is a fill and large-text color only (4.5:1
+   with white falls just short); buttons and red text use red-deep #c8161e (5.9:1 on white, 5.3:1 on cream),
+   and red text on black uses red-glow #ff5a5f (6.5:1). Marigold is a fill with ink text (9.8:1) or text on
+   black; marigold text on cream uses marigold-ink (5.4:1). Body text on cream is stone (7.0:1). */
+@theme {
+  --color-ink: #0b0b0b;
+  --color-coal: #171717;
+  --color-coal-line: #2a2a2a;
+  --color-red: #ea1d25;
+  --color-red-deep: #c8161e;
+  --color-red-dark: #a81219;
+  --color-red-glow: #ff5a5f;
+  --color-red-soft: #fde4e3;
+  --color-cream: #fbf4e6;
+  --color-cream-deep: #f3e6cc;
+  --color-marigold: #f2a900;
+  --color-marigold-light: #f4c24d;
+  --color-marigold-ink: #8a5a00;
+  --color-stone: #5c5247;
+  --color-sand: #d9cdb8;
+}
+
+/* `inline` so utilities reference the next/font variables directly rather than resolving them on :root. */
+@theme inline {
+  --font-display: var(--font-oswald), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-source-sans), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+/* The logo's double red arc, drawn as two rings: used as a quiet backdrop on dark panels. */
+.plaza-rings {
+  background:
+    radial-gradient(circle, transparent 57%, var(--color-red) 57.5%, var(--color-red) 61%, transparent 61.5%),
+    radial-gradient(circle, transparent 65%, var(--color-red) 65.5%, var(--color-red) 69%, transparent 69.5%);
+}
+
+/* Checkered taco-paper strip from their photos, as a divider. */
+.checker {
+  height: 14px;
+  background-color: var(--color-cream);
+  background-image:
+    linear-gradient(45deg, var(--color-ink) 25%, transparent 25%, transparent 75%, var(--color-ink) 75%),
+    linear-gradient(45deg, var(--color-ink) 25%, transparent 25%, transparent 75%, var(--color-ink) 75%);
+  background-size: 14px 14px;
+  background-position:
+    0 0,
+    7px 7px;
+}
+
+.lift {
+  box-shadow:
+    0 1px 2px rgb(11 11 11 / 0.08),
+    0 18px 40px -18px rgb(11 11 11 / 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
